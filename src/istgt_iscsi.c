@@ -6284,8 +6284,8 @@ istgt_create_conn(ISTGT_Ptr istgt, PORTAL_Ptr portal, int sock, struct sockaddr 
 	pthread_set_name_np(conn->thread, buf);
 #endif
 
-	/* XXX should use sleep loop? */
-	sleep(1);
+	while (*(volatile int *)&conn->state == CONN_STATE_INVALID)
+		usleep(1000);
 #if 0
 	/* wait the thread is running */
 	while (conn->state == CONN_STATE_INVALID) {
