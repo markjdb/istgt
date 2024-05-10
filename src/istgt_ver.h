@@ -29,6 +29,6 @@
 #define ISTGT_VER_H
 
 #define ISTGT_VERSION "0.5"
-#define ISTGT_EXTRA_VERSION "20180521"
+#define ISTGT_EXTRA_VERSION "20240510"
 
 #endif /* ISTGT_VER_H */
