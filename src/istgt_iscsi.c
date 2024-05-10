@@ -6721,8 +6721,10 @@ istgt_iscsi_drop_all_conns(CONN_Ptr conn)
 			num++;
 		}
 	}
-	istgt_yield();
-	sleep(1);
+	if (num > 0) {
+		istgt_yield();
+		sleep(1);
+	}
 	if (num > max_conns + 1) {
 		printf("try pthread_cancel\n");
 		for (i = 0; i < g_nconns; i++) {
@@ -6805,8 +6807,10 @@ istgt_iscsi_drop_old_conns(CONN_Ptr conn)
 			num++;
 		}
 	}
-	istgt_yield();
-	sleep(1);
+	if (num > 0) {
+		istgt_yield();
+		sleep(1);
+	}
 	if (num > max_conns + 1) {
 		printf("try pthread_cancel\n");
 		for (i = 0; i < g_nconns; i++) {
